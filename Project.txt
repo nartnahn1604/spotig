@@ -1,0 +1,229 @@
+CREATE TABLE AUTHORS(
+    AUTHOR_ID INT NOT NULL PRIMARY KEY,
+    AUTHOR_NAME VARCHAR2(100),
+    AUTHOR_BIO VARCHAR2(2000),
+    AUTHOR_AVT VARCHAR2(100)
+);
+
+CREATE TABLE SONGS (
+    SONG_ID INT NOT NULL PRIMARY KEY,
+    AUTHOR_ID INT,
+    ARTIST_ID INT,
+    ALBUM_ID INT,
+    SONG_NAME VARCHAR2(1000),
+    GENRE_ID INT,
+    SONG_URL VARCHAR2(2000)
+);
+
+alter table songs
+add SONG_THUMB varchar2(2000);
+
+alter table Albums
+add ALBUM_THUMB VARCHAR2(2000);
+
+CREATE TABLE ARTISTS(
+    ARTIST_ID INT NOT NULL PRIMARY KEY,
+    ARTIST_NAME VARCHAR2(100),
+    ARTIST_AVT VARCHAR2(100),
+    ARTIST_BIO VARCHAR2(2000)
+);
+
+CREATE TABLE ALBUMS(
+    ALBUM_ID INT NOT NULL PRIMARY KEY,
+    ALBUM_NAME VARCHAR2(200),
+    ARTIST_ID INT
+);
+
+CREATE TABLE GENRES(
+    GENRE_ID INT NOT NULL PRIMARY KEY,
+    GENRE_NAME VARCHAR2(200)
+);
+
+ALTER TABLE SONGS ADD CONSTRAINT FK_SONGS_AUTHOR_ID
+FOREIGN KEY (AUTHOR_ID) REFERENCES AUTHORS (AUTHOR_ID);
+
+ALTER TABLE SONGS ADD CONSTRAINT FK_SONGS_ARTIST_ID
+FOREIGN KEY (ARTIST_ID) REFERENCES ARTISTS (ARTIST_ID);
+
+ALTER TABLE SONGS ADD CONSTRAINT FK_SONGS_ALBUM_ID
+FOREIGN KEY (ALBUM_ID) REFERENCES ALBUMS (ALBUM_ID);
+
+ALTER TABLE SONGS ADD CONSTRAINT FK_SONGS_GENRE_ID
+FOREIGN KEY (GENRE_ID) REFERENCES GENRES (GENRE_ID);
+
+ALTER TABLE ALBUMS ADD CONSTRAINT FK_ALBUMS_ARTIST_ID
+FOREIGN KEY (ARTIST_ID) REFERENCES ARTISTS (ARTIST_ID);
+
+CREATE SEQUENCE aut_seq
+  START WITH 1
+  INCREMENT BY 1;
+CREATE SEQUENCE art_seq
+  START WITH 1
+  INCREMENT BY 1;
+CREATE SEQUENCE song_seq
+  START WITH 1
+  INCREMENT BY 1;
+CREATE SEQUENCE alb_seq
+  START WITH 1
+  INCREMENT BY 1;
+CREATE SEQUENCE genre_seq
+  START WITH 1
+  INCREMENT BY 1;
+  
+-------------------Authors--------------------
+
+insert into authors values(aut_seq.nextval, 'Trịnh Đình Quang', 'Tên thật là Trịnh Đình Quang', 'AUTHORS/knrnzsucejs2wmp4ntyb');
+insert into authors values(aut_seq.nextval, 'Hương Tràm', 'Tên thật là Phạm Thị Hương Tràm', 'AUTHORS/rlpzusfmyzazg0mmduxs');
+insert into authors values(aut_seq.nextval, 'Mỹ Tâm', 'Tên thật là Phan Thị Mỹ Tâm', 'AUTHORS/kgjhcij8qk9yaylsb02c');
+insert into authors values(aut_seq.nextval, 'Huy R', 'Tên thật là Vũ Văn Huy', 'AUTHORS/lrmedsy6v8ix2qpnzqsb');
+insert into authors values(aut_seq.nextval, 'Trịnh Thăng Bình', 'Tên thật là Trịnh Thăng Bình', 'AUTHORS/tjfwehnothhmoq5c3cip');
+insert into authors values(aut_seq.nextval, 'Bích Phương', 'Tên thật là Bùi Thị Bích Phương', 'AUTHORS/h9a52li03p1sqnhb5eo2');
+insert into authors values(aut_seq.nextval, 'Hoàng Tôn', 'Tên thật là Nguyễn Hoàng Tôn', 'AUTHORS/hxropllmkr5r6ly82dyp');
+insert into authors values(aut_seq.nextval, 'Lê Bảo Bình', 'Tên thật là Lê Văn Bình', 'AUTHORS/y1lfu7odh5peud8cocgs');
+insert into authors values(aut_seq.nextval, 'Xesi', 'Tên thật là Trần Hải Yến', 'AUTHORS/neix93iuqzbr4hcgfzcr');
+insert into authors values(aut_seq.nextval, 'Đức Phúc', 'Tên thật là Nguyễn Đức Phúc', 'AUTHORS/ekujo7blg4a6a3d5f7nv');
+insert into authors values(aut_seq.nextval, 'JustaTee', 'Tên thật là Nguyễn Thanh Tuấn', 'AUTHORS/k58erftnfjgihfck4on2');
+insert into authors values(aut_seq.nextval, 'Đạt G', 'Tên thật là Nguyễn Tấn Đạt', 'AUTHORS/tzoluywcdux47ansngen');
+insert into authors values(aut_seq.nextval, 'Bùi Anh Tuấn', 'Tên thật là Bùi Anh Tuấn', 'AUTHORS/nwtxchhqrtqzhqofmsj7');
+insert into authors values(aut_seq.nextval, 'Bảo Anh', 'Tên thật là Nguyễn Hoài Bảo Anh', 'AUTHORS/bh0mv0ni3mda6ckxrvio');
+insert into authors values(aut_seq.nextval, 'Min', 'Tên thật là Nguyễn Minh Hằng', 'AUTHORS/ntwrq0pdhkdgrqpwqwkm');
+insert into authors values(aut_seq.nextval, 'Phan Mạnh Quỳnh', 'Tên thật là Phan Mạnh Quỳnh', 'AUTHORS/rylsvok41q4hlwijrfyf');
+insert into authors values(aut_seq.nextval, 'Phan Duy Anh', 'Tên thật là Ngô Đức Huy', 'AUTHORS/wdvp4bm45unrzufueynz');
+insert into authors values(aut_seq.nextval, 'Đen Vâu', 'Tên thật là Nguyễn Đức Cường', 'AUTHORS/xanfy9drta6qxs4rvnwr');
+insert into authors values(aut_seq.nextval, 'Vy Oanh', 'Tên thật là Nguyễn Thị Mỹ Oanh', 'AUTHORS/jd3xxtkuvpjhggrs74iv');
+insert into authors values(aut_seq.nextval, 'Hoàng Dũng', 'Tên thật là Nguyễn Hoàng Dũng', 'AUTHORS/p6a1ojgfczhufbvhjemy');
+insert into authors values(aut_seq.nextval, 'Chi Dân', 'Tên thật là Nguyễn Trung Hiếu', 'AUTHORS/dy7zd3zwe9uefbdqmvu3');
+insert into authors values(aut_seq.nextval, 'Only C', 'Tên thật là Nguyễn Phúc Thạch', 'AUTHORS/wxpbammrtjctxephbrpi');
+insert into authors values(aut_seq.nextval, 'Erik', 'Tên thật là Lê Trung Thành', 'AUTHORS/modhumrzavggnzom9fl4');
+insert into authors values(aut_seq.nextval, 'Mr. Siro', 'Tên thật là Vương Quốc Tuân', 'AUTHORS/aotuub4cciyubs99zsf8');
+insert into authors values(aut_seq.nextval, 'Karik', 'Tên thật là Phạm Hoàng Khoa', 'AUTHORS/ugxa3eylf9wrg6jnguu4');
+insert into authors values(aut_seq.nextval, 'Sơn Tùng M-TP', 'Tên thật là Nguyễn Thanh Tùng', 'AUTHORS/abptzb8fb4butkmk4knm');
+insert into authors values(aut_seq.nextval, 'Amee', 'Tên thật là Trần Huyền My', 'AUTHORS/s4gbsxp1b62hrcwitcm0');
+insert into authors values(aut_seq.nextval, 'Jack', 'Tên thật là Trịnh Trần Phương Tuấn', 'AUTHORS/qtdbbe7nm8crjyts9v6h');
+
+-------------------Songs--------------------
+
+insert into songs values(song_seq.nextval, 1, 1, 1, 'Thất tình', 1, '3vrHf2y4TYjs0gfu3m8Nos', 'SONGS/ustqujf0koduaiw0hoef');
+insert into songs values(song_seq.nextval, 1, 1, 1, 'Nếu em còn tồn tại', 1, '6034y0p8fmxBH8DYhvIAJF', 'SONGS/cyu0n24875ij8gnfnuqe');
+insert into songs values(song_seq.nextval, 2, 2, 2, 'Em gái mưa', 1, '7MhbS0jIDu0ip0hl7ktENJ', 'SONGS/ytiobgobfuyn14iszjtn');
+insert into songs values(song_seq.nextval, 2, 2, 2, 'Ra là em đâu quá mong manh', 1, '0AfV1Fr2nWmXFxC3RkhawH', 'SONGS/zrtjvrs1nk0x06eljwog');
+insert into songs values(song_seq.nextval, 3, 3, 3, 'Đúng cũng thành sai', 1, '33weHbON0j21ZPUMc0ZKTt', 'SONGS/vwhplzauilp7ulyuuqsw');
+insert into songs values(song_seq.nextval, 3, 3, 3, 'Người hãy quên em đi', 1, '1rJyVbXb3njXbN3lokllKf', 'SONGS/u4jz1yosf368weensq4p');
+insert into songs values(song_seq.nextval, 4, 4, 4, 'Anh thanh niên', 2, '2qoGaLtl0nzLlqib9aIaCe', 'SONGS/vzj8bscsahfifkmo6gjg');
+insert into songs values(song_seq.nextval, 4, 4, 4, 'Cô gái vàng', 2, '0JoNTJrkb1hYIzOvRu908q', 'SONGS/xumx7it2eissca8tebk1');
+insert into songs values(song_seq.nextval, 5, 5, 5, 'Người ấy', 2, '1Szl9lPaJ750Hn2hRX9QI0', 'SONGS/nlkl1rbjlbqak0ioknso');
+insert into songs values(song_seq.nextval, 5, 5, 5, 'Đã biết sẽ có ngày hôm qua', 2, '65coxKC1JPMqUYVbx616Vj', 'SONGS/s7phlgp1e3igfpoim0x7');
+insert into songs values(song_seq.nextval, 6, 6, 6, 'Từ chối nhẹ nhàng thôi', 1, '6m1oexLqQpf9nbrkrHXOWc', 'SONGS/h5pe4enexz8d9nliowgw');
+insert into songs values(song_seq.nextval, 6, 6, 6, 'Đi đu đưa đi', 2, '6KuLKUejQQM6P686D0e36l', 'SONGS/om23etxyi6qh42qstnrt');
+insert into songs values(song_seq.nextval, 7, 7, 7, 'Yêu em rất nhiều', 2, '0sVd1ZavOfbqd5AHspc1Tr', 'SONGS/o1lxwghf1sli4eizddqg');
+insert into songs values(song_seq.nextval, 7, 7, 7, 'Vệ tinh', 2, '0sVd1ZavOfbqd5AHspc1Tr', 'SONGS/ssg31odq9qxkmpp4dlox');
+insert into songs values(song_seq.nextval, 8, 8, 8, 'Yêu vội vàng', 2, '02cLj5vmyCqvynPw4S5LFk', 'SONGS/lobzytzaxncext3gv0xi');
+insert into songs values(song_seq.nextval, 8, 8, 8, 'Hỏi thăm nhau', 2, '5i7gVDXLScEuG0twf8M0zo', 'SONGS/bntcdkjfgutsqmdt0tcs');
+insert into songs values(song_seq.nextval, 9, 9, 9, 'Túy âm', 1, '5wh1aBvWkafmzhj1JKKc1R', 'SONGS/nj96abt2z4zyelfxnenk');
+insert into songs values(song_seq.nextval, 9, 9, 9, 'Vô tình', 2, '2AIvSrFr9efylDJ2yV4yy1', 'SONGS/zezbxfmrc9rjpfyt2tig');
+insert into songs values(song_seq.nextval, 10, 10, 10, 'Ngày đầu tiên', 1, '5Msoarj5hk9LguTtiIyqug', 'SONGS/flkfssnsilhztpijatnj');
+insert into songs values(song_seq.nextval, 10, 10, 10, 'Cũng đành thôi', 1, '1Gu3moX7qQp4t2jk6kJ0C6', 'SONGS/t9cxlq1zbfxtukwdx37s');
+insert into songs values(song_seq.nextval, 11, 11, 11, 'Đi về nhà', 2, '7LVrrX8pkzI9fMF88nGabt', 'SONGS/to8k0rtljxgm9ed750tz');
+insert into songs values(song_seq.nextval, 15, 15, 15, 'Vì yêu cứ đâm đầu', 2, '02Jf3KszL1FB1kG6CILEWE', 'SONGS/rrmobxlpdsc3jbcssqbk');
+insert into songs values(song_seq.nextval, 12, 12, 12, 'Bánh mì không', 2, '75yaWm872H69rpy51Oz0lu', 'SONGS/lssjvifptdw1sogeaskc');
+insert into songs values(song_seq.nextval, 12, 12, 12, 'Buồn không em', 2, '764qoJTYYr4lEL5NYJwSjV', 'SONGS/d8hqfk3fihonfsywpsuy');
+insert into songs values(song_seq.nextval, 13, 13, 13, 'Nơi tình yêu bắt đầu', 2, '5y3m3UvJRHDPCqO2SBq98f', 'SONGS/ezfu5bjaklncq4mfhvna');
+insert into songs values(song_seq.nextval, 13, 13, 13, 'Nơi tình yêu kết thúc', 2, '6ahYdGHGTfy83VwR4AhQi9', 'SONGS/gsqvxej1ritvxybvkxfh');
+insert into songs values(song_seq.nextval, 14, 14, 14, 'Từng là của nhau', 2, '5KYv3kORBKUmVEoqbRRWxt', 'SONGS/rb6piln7owdjpdrdj5z3');
+insert into songs values(song_seq.nextval, 14, 14, 14, 'Yêu một người vô tâm', 2, '1nsFL5RxVT3gD3wxCs8b7z', 'SONGS/vcxwxjzflmxyfymts0r4');
+insert into songs values(song_seq.nextval, 15, 15, 15, 'Trên tình bạn dưới tình yêu', 2, '4zFgUpC8z88A9aEo7dnRPN', 'SONGS/u8wartye8fx0u07lkt9k');
+insert into songs values(song_seq.nextval, 15, 15, 15, 'Bài này chill phết', 2, '2nR51wakN5K3AJENqGaNg9', 'SONGS/b5btw8scncygeju8hkx8');
+insert into songs values(song_seq.nextval, 16, 16, 16, 'Có chàng trai viết lên cây', 2, '2nR51wakN5K3AJENqGaNg9', 'SONGS/x9ft4p01sjckrvj8g1vm');
+insert into songs values(song_seq.nextval, 16, 16, 16, 'Nhạt', 2, '5HKoAtKVhcc2XFYmxZOeNg', 'SONGS/q1qbho0diihtvyjuzuki');
+insert into songs values(song_seq.nextval, 17, 17, 17, 'Từng yêu', 2, '6Y3PVZ6AZXWWYZiIWa1LBG', 'SONGS/lclmcprkvzavzzmnssdr');
+insert into songs values(song_seq.nextval, 17, 17, 17, 'Từng thương', 2, '0gt8I8BvclqIlyAdJT0e70', 'SONGS/rqnbr1ectgt28shamnei');
+insert into songs values(song_seq.nextval, 18, 18, 18, 'Lối nhỏ', 2, '25edeHHueINMguqu9emCyV', 'SONGS/arsyrc8tiw0lpvm9nooq');
+insert into songs values(song_seq.nextval, 18, 18, 18, 'Nấu ăn cho em', 2, '7td8DTWoGC9u9db37mGHX6', 'SONGS/gnpjoymvthr095az6lyb');
+insert into songs values(song_seq.nextval, 19, 19, 19, 'Để cho em khóc', 1, '4MAqniQGkIOW32fo13euuw', 'SONGS/b1ydtk9hb09vv67d4m4x');
+insert into songs values(song_seq.nextval, 19, 19, 19, 'Em rất nhớ anh', 1, '0OdRzjD1FwnzrFqkKOjg3q', 'SONGS/brwjwgia0kwh8nfcymxd');
+insert into songs values(song_seq.nextval, 20, 20, 20, 'Nàng thơ', 1, '1w3eUC89GPspKpi62tPwjt', 'SONGS/jujuthz52nrp8l01lqml');
+insert into songs values(song_seq.nextval, 20, 20, 20, 'Khi em lớn', 1, '5nD5PVXUkIpv0WcwfNFrgS', 'SONGS/rjxn5n0gdywo7yok1nx1');
+insert into songs values(song_seq.nextval, 21, 21, 21, 'Anh không sao đâu', 1, '2w5ESrw6neu9NHNxotjESN', 'SONGS/vngn2zxaie02boetrany');
+insert into songs values(song_seq.nextval, 21, 21, 21, 'Người tôi yêu', 1, '2w5ESrw6neu9NHNxotjESN', 'SONGS/syc7bmdmrcnczxzxho5n');
+insert into songs values(song_seq.nextval, 22, 22, 22, 'Người đáng thương là anh', 1, '55K3e7BGewGDUJ4ZQwkh7M', 'SONGS/sbievaxsivlumrq043qo');
+insert into songs values(song_seq.nextval, 22, 22, 22, 'Đau để trưởng thành', 1, '5iMdP8UpQS4Vn43R30fhhs', 'SONGS/b9npd7munganumxocn4o');
+insert into songs values(song_seq.nextval, 23, 23, 23, 'Em không sai, chúng ta sai', 1, '3yWacnoBnM0lrzLmXAk44d', 'SONGS/ttxwfbeuqez7djft4i2s');
+insert into songs values(song_seq.nextval, 23, 23, 23, 'Chạy về khóc với anh', 1, '7hzVxbVA6Y5t9YDzpSgdRS', 'SONGS/yogrxywcp2mqqnz3bbdh');
+insert into songs values(song_seq.nextval, 24, 24, 24, 'Một bước yêu vạn dặm đau', 1, '1u3aGopt09bxmUDs8c94XY', 'SONGS/ihmak18whus05xhuszrj');
+insert into songs values(song_seq.nextval, 24, 24, 24, 'Dưới những cơn mưa', 1, '1t6SwYMSGIvfX7OZ9RwFdN', 'SONGS/ihshtncoaihvlm7vleqs');
+insert into songs values(song_seq.nextval, 25, 25, 25, 'Có chơi có chịu', 1, '2pYFHEy0xp48Le5Bfw5vcX', 'SONGS/mcb9zu4xiu7iddz5sklw');
+insert into songs values(song_seq.nextval, 25, 25, 25, 'Em bé', 1, '4RZJObXQzsKQLd25LBjBG8', 'SONGS/nw2mdyc7fddbdflkkrb5');
+insert into songs values(song_seq.nextval, 26, 26, 26, 'Muộn rồi mà sao còn', 1, '5fFLotKS1286huYIMQHqz7', 'SONGS/t27zgxagkmbt6cispvso');
+insert into songs values(song_seq.nextval, 26, 26, 26, 'Chúng ta của hiện tại', 1, '17iGUekw5nFt5mIRJcUm3R', 'SONGS/k0pc2vcc3dtmiqygld5t');
+insert into songs values(song_seq.nextval, 27, 27, 27, 'Anh đánh rơi người yêu này', 1, '5J90ah0ppUSev1uahqQiN6', 'SONGS/ss3mxzf8kgtd7psusikf');
+insert into songs values(song_seq.nextval, 27, 27, 27, 'Hai mươi hai', 1, '5J90ah0ppUSev1uahqQiN6', 'SONGS/latq5avssxotsxi2vmvu');
+insert into songs values(song_seq.nextval, 28, 28, 28, 'Hoa hải đường', 1, '0J2otOvMdg62gVMMjwOvSK', 'SONGS/bvcxpyex5kmlgg4pduky');
+insert into songs values(song_seq.nextval, 28, 28, 28, 'Đom đóm', 1, '5Ojsg9xR0wlTpDIW1qLYz2', 'SONGS/zgskdnfb8cf9yf8rvz0c');
+
+-------------------Artists--------------------
+
+insert into artists values(art_seq.nextval, 'Trịnh Đình Quang', 'Tên thật là Trịnh Đình Quang', 'AUTHORS/knrnzsucejs2wmp4ntyb');
+insert into artists values(art_seq.nextval, 'Hương Tràm', 'Tên thật là Phạm Thị Hương Tràm', 'AUTHORS/rlpzusfmyzazg0mmduxs');
+insert into artists values(art_seq.nextval, 'Mỹ Tâm', 'Tên thật là Phan Thị Mỹ Tâm', 'AUTHORS/kgjhcij8qk9yaylsb02c');
+insert into artists values(art_seq.nextval, 'Huy R', 'Tên thật là Vũ Văn Huy', 'AUTHORS/lrmedsy6v8ix2qpnzqsb');
+insert into artists values(art_seq.nextval, 'Trịnh Thăng Bình', 'Tên thật là Trịnh Thăng Bình', 'AUTHORS/tjfwehnothhmoq5c3cip');
+insert into artists values(art_seq.nextval, 'Bích Phương', 'Tên thật là Bùi Thị Bích Phương', 'AUTHORS/h9a52li03p1sqnhb5eo2');
+insert into artists values(art_seq.nextval, 'Hoàng Tôn', 'Tên thật là Nguyễn Hoàng Tôn', 'AUTHORS/hxropllmkr5r6ly82dyp');
+insert into artists values(art_seq.nextval, 'Lê Bảo Bình', 'Tên thật là Lê Văn Bình', 'AUTHORS/y1lfu7odh5peud8cocgs');
+insert into artists values(art_seq.nextval, 'Xesi', 'Tên thật là Trần Hải Yến', 'AUTHORS/neix93iuqzbr4hcgfzcr');
+insert into artists values(art_seq.nextval, 'Đức Phúc', 'Tên thật là Nguyễn Đức Phúc', 'AUTHORS/ekujo7blg4a6a3d5f7nv');
+insert into artists values(art_seq.nextval, 'JustaTee', 'Tên thật là Nguyễn Thanh Tuấn', 'AUTHORS/k58erftnfjgihfck4on2');
+insert into artists values(art_seq.nextval, 'Đạt G', 'Tên thật là Nguyễn Tấn Đạt', 'AUTHORS/tzoluywcdux47ansngen');
+insert into artists values(art_seq.nextval, 'Bùi Anh Tuấn', 'Tên thật là Bùi Anh Tuấn', 'AUTHORS/nwtxchhqrtqzhqofmsj7');
+insert into artists values(art_seq.nextval, 'Bảo Anh', 'Tên thật là Nguyễn Hoài Bảo Anh', 'AUTHORS/bh0mv0ni3mda6ckxrvio');
+insert into artists values(art_seq.nextval, 'Min', 'Tên thật là Nguyễn Minh Hằng', 'AUTHORS/ntwrq0pdhkdgrqpwqwkm');
+insert into artists values(art_seq.nextval, 'Phan Mạnh Quỳnh', 'Tên thật là Phan Mạnh Quỳnh', 'AUTHORS/rylsvok41q4hlwijrfyf');
+insert into artists values(art_seq.nextval, 'Phan Duy Anh', 'Tên thật là Ngô Đức Huy', 'AUTHORS/wdvp4bm45unrzufueynz');
+insert into artists values(art_seq.nextval, 'Đen Vâu', 'Tên thật là Nguyễn Đức Cường', 'AUTHORS/xanfy9drta6qxs4rvnwr');
+insert into artists values(art_seq.nextval, 'Vy Oanh', 'Tên thật là Nguyễn Thị Mỹ Oanh', 'AUTHORS/jd3xxtkuvpjhggrs74iv');
+insert into artists values(art_seq.nextval, 'Hoàng Dũng', 'Tên thật là Nguyễn Hoàng Dũng', 'AUTHORS/p6a1ojgfczhufbvhjemy');
+insert into artists values(art_seq.nextval, 'Chi Dân', 'Tên thật là Nguyễn Trung Hiếu', 'AUTHORS/dy7zd3zwe9uefbdqmvu3');
+insert into artists values(art_seq.nextval, 'Only C', 'Tên thật là Nguyễn Phúc Thạch', 'AUTHORS/wxpbammrtjctxephbrpi');
+insert into artists values(art_seq.nextval, 'Erik', 'Tên thật là Lê Trung Thành', 'AUTHORS/modhumrzavggnzom9fl4');
+insert into artists values(art_seq.nextval, 'Mr. Siro', 'Tên thật là Vương Quốc Tuân', 'AUTHORS/aotuub4cciyubs99zsf8');
+insert into artists values(art_seq.nextval, 'Karik', 'Tên thật là Phạm Hoàng Khoa', 'AUTHORS/ugxa3eylf9wrg6jnguu4');
+insert into artists values(art_seq.nextval, 'Sơn Tùng M-TP', 'Tên thật là Nguyễn Thanh Tùng', 'AUTHORS/abptzb8fb4butkmk4knm');
+insert into artists values(art_seq.nextval, 'Amee', 'Tên thật là Trần Huyền My', 'AUTHORS/s4gbsxp1b62hrcwitcm0');
+insert into artists values(art_seq.nextval, 'Jack', 'Tên thật là Trịnh Trần Phương Tuấn', 'AUTHORS/qtdbbe7nm8crjyts9v6h');
+
+-------------------Albums--------------------
+
+insert into albums values(alb_seq.nextval, 'Trịnh Đình Quang',1 ,'AUTHORS/knrnzsucejs2wmp4ntyb' );
+insert into albums values(alb_seq.nextval, 'Hương Tràm',2 ,'AUTHORS/rlpzusfmyzazg0mmduxs' );
+insert into albums values(alb_seq.nextval, 'Mỹ Tâm',3 ,'AUTHORS/kgjhcij8qk9yaylsb02c' );
+insert into albums values(alb_seq.nextval, 'Huy R',4 ,'AUTHORS/lrmedsy6v8ix2qpnzqsb' );
+insert into albums values(alb_seq.nextval, 'Trịnh Thăng Bình',5 ,'AUTHORS/tjfwehnothhmoq5c3cip' );
+insert into albums values(alb_seq.nextval, 'Bích Phương',6 ,'AUTHORS/h9a52li03p1sqnhb5eo2' );
+insert into albums values(alb_seq.nextval, 'Hoàng Tôn',7 ,'AUTHORS/hxropllmkr5r6ly82dyp' );
+insert into albums values(alb_seq.nextval, 'Lê Bảo Bình',8 ,'AUTHORS/y1lfu7odh5peud8cocgs' );
+insert into albums values(alb_seq.nextval, 'Xesi',9 ,'AUTHORS/neix93iuqzbr4hcgfzcr' );
+insert into albums values(alb_seq.nextval, 'Đức Phúc',10 ,'AUTHORS/ekujo7blg4a6a3d5f7nv' );
+insert into albums values(alb_seq.nextval, 'JustaTee',11 ,'AUTHORS/k58erftnfjgihfck4on2' );
+insert into albums values(alb_seq.nextval, 'Đạt G',12 ,'AUTHORS/tzoluywcdux47ansngen' );
+insert into albums values(alb_seq.nextval, 'Bùi Anh Tuấn',13 ,'AUTHORS/nwtxchhqrtqzhqofmsj7' );
+insert into albums values(alb_seq.nextval, 'Bảo Anh',14 ,'AUTHORS/bh0mv0ni3mda6ckxrvio' );
+insert into albums values(alb_seq.nextval, 'Min',15 ,'AUTHORS/ntwrq0pdhkdgrqpwqwkm' );
+insert into albums values(alb_seq.nextval, 'Phan Mạnh Quỳnh',16 ,'AUTHORS/rylsvok41q4hlwijrfyf' );
+insert into albums values(alb_seq.nextval, 'Phan Duy Anh',17 ,'AUTHORS/wdvp4bm45unrzufueynz' );
+insert into albums values(alb_seq.nextval, 'Đen Vâu',18 ,'AUTHORS/xanfy9drta6qxs4rvnwr' );
+insert into albums values(alb_seq.nextval, 'Vy Oanh',19 ,'AUTHORS/jd3xxtkuvpjhggrs74iv' );
+insert into albums values(alb_seq.nextval, 'Hoàng Dũng',20 ,'AUTHORS/p6a1ojgfczhufbvhjemy' );
+insert into albums values(alb_seq.nextval, 'Chi Dân',21 ,'AUTHORS/dy7zd3zwe9uefbdqmvu3' );
+insert into albums values(alb_seq.nextval, 'Only C',22 ,'AUTHORS/wxpbammrtjctxephbrpi' );
+insert into albums values(alb_seq.nextval, 'Erik',23 ,'AUTHORS/modhumrzavggnzom9fl4' );
+insert into albums values(alb_seq.nextval, 'Mr. Siro',24 ,'AUTHORS/aotuub4cciyubs99zsf8' );
+insert into albums values(alb_seq.nextval, 'Karik',25 ,'AUTHORS/ugxa3eylf9wrg6jnguu4' );
+insert into albums values(alb_seq.nextval, 'Sơn Tùng M-TP',26 ,'AUTHORS/abptzb8fb4butkmk4knm' );
+insert into albums values(alb_seq.nextval, 'Amee',27 ,'AUTHORS/s4gbsxp1b62hrcwitcm0' );
+insert into albums values(alb_seq.nextval, 'Jack',28 ,'AUTHORS/qtdbbe7nm8crjyts9v6h' );
+
+-------------------Genres--------------------
+
+insert into genres values(genre_seq.nextval, 'Ballad');
+insert into genres values(genre_seq.nextval, 'Pop');
+

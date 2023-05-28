@@ -1,0 +1,54 @@
+.lib-item:hover {
+    background-color: #2a2a2a;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    display: none;
+}
+
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* img{
+    clip-path: circle();
+    object-fit: cover;
+} */
+
+.main-item{
+    background-color: #1a1a1a;
+    color: white;
+}
+.btn-float{
+    opacity: 0;
+    transition: opacity 0.5s, transform 1s;
+}
+.main-item:hover .btn-float{
+    opacity: 1;
+    transform: translate(-15px,5px);
+}
+.main-item:hover {
+    background-color: #2a2a2a;
+}
+
+.nav-item{
+    cursor: pointer;
+}
+
+.btn:disabled{
+    border-color: transparent;
+}
